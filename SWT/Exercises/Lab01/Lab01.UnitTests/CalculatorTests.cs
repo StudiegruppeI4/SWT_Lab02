@@ -19,6 +19,7 @@ namespace Lab01.UnitTests
         [TestCase(5, 4, 9)]
         [TestCase(-5, 2, -3)]
         [TestCase(9, 10, 19)]
+        [TestCase(5, 24, 29)]
         public void Add_Tests_Success(double a, double b, double expected)
         {
             Assert.That(c.Add(a, b), Is.EqualTo(expected));
