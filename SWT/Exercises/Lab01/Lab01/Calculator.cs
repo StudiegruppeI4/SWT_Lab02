@@ -34,15 +34,15 @@ namespace Lab01
 
         public double Divide(double a, double b)
         {
-            double result = a / b;
-            Accumulator = result;
-            return result;
+                if(b == 0) throw new DivideByZeroException();
+                double result = a / b;
+                Accumulator = result;
+                return result;
         }
 
         //Using Accumulator
         public double Add(double a)
         {
-            
             return Add(Accumulator,a);
         }
 
@@ -53,7 +53,7 @@ namespace Lab01
 
         public double Multiply(double a)
         {
-            return  Multiply(Accumulator,a);
+            return Multiply(Accumulator,a);
         }
 
         public double Power(double x)

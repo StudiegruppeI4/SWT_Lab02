@@ -56,11 +56,17 @@ namespace Lab01.UnitTests
         [TestCase(6,3,2)]
         [TestCase(10,5,2)]
         [TestCase(10,3,(3.3333333333333335d))]
-        public void Test_divide_function(double a, double b, double expected)
+        public void Divide_Tests_Success(double a, double b, double expected)
         {
             Assert.That(c.Divide(a,b), Is.EqualTo(expected));
         }
 
+        [TestCase(10, 0)]
+        [TestCase(5, 0)]
+        public void Divide_Tests_Fail(double a, double b)
+        {
+            Assert.That(() => c.Divide(a,b), Throws.TypeOf<DivideByZeroException>());
+        }
 
         [Test]
         public void Accumulator_Add_1_2_Accumulator_Equals_3_Success()
@@ -69,7 +75,12 @@ namespace Lab01.UnitTests
             Assert.That(c.Accumulator, Is.EqualTo(3));
         }
 
-
+        [Test]
+        public void Power_Negative_Exponential_Success()
+        {
+            c.Power(5, -5.72);
+            Assert.That(c.Accumulator, Is.EqualTo(0.0001004365d).Within(0.05));
+        }
 
         [TearDown]
         public void TearDown()
